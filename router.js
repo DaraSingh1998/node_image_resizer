@@ -1,4 +1,3 @@
-
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -18,7 +17,7 @@ router.post('/post', upload.single('image'), async function (req, res) {
     res.status(401).json({error: 'Please provide an image'});
   }
   const filename = await fileUpload.save(req.file.buffer);
-  return res.status(200).json({ name: filename });
+  return res.render('result',{name: filename});
 });
 
 module.exports = router;
